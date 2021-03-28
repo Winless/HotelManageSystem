@@ -47,11 +47,18 @@ export const constantRoutes = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
+    name: 'Home',
+    meta: { title: '房态中心', icon: 'el-icon-s-home' },
     children: [{
-      path: 'dashboard',
+      path: '/dashboard/index',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: '房态中心', icon: 'dashboard' }
+      meta: { title: '房态列表', icon: 'dashboard' }
+    }, {
+      path: '/dashboard/roomStatusTable',
+      name: 'Dashboard',
+      component: () => import('@/views/dashboard/roomStatusTable'),
+      meta: { title: '房态图', icon: 'dashboard' }
     }]
   },
 
@@ -97,68 +104,152 @@ export const constantRoutes = [
     name: 'Nested',
     meta: {
       title: 'Nested',
-      icon: 'nested'
+      icon: 'nested',
+    }
+// =======
+//       meta: { title: '房态列表' }
+// >>>>>>> 78119021c39dddbe77592ee54d2ec78745fc6183
     },
-    children: [
-      {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
-      },
-      {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
-      }
-    ]
-  },
+    // {
+    //   path: '/dashboardPic',
+    //   name: 'RoomStatusTable',
+    //   component: () => import('@/views/dashboard/roomStatusTable'),
+    //   meta: { title: '房态图' }
+    // }
+    // {
+    //   path: 'dashboard',
+    //   name: 'Home',
+    //   component: () => import('@/views/dashboard/roomStatusTable'),
+    //   meta: { title: '查房列表' }
+    // },
+    // {
+    //   path: 'dashboard',
+    //   name: 'Home',
+    //   component: () => import('@/views/dashboard/roomStatusTable'),
+    //   meta: { title: '房务列表' }
+    // }
+    // ]
+  // },
+  /* 预订接待*/
+  // {
+  //   path: '/example',
+  //   component: Layout,
+  //   redirect: '/example/table',
+  //   name: 'Example',
+  //   meta: { title: '预订接待', icon: 'el-icon-document' },
+  //   children: [
+  //     {
+  //       path: 'table',
+  //       name: 'Table',
+  //       // component: () => import('@/views/table/index'),
+  //       meta: { title: '订单管理' }
+  //     },
+  //     {
+  //       path: 'tree',
+  //       name: 'Tree',
+  //       // component: () => import('@/views/tree/index'),
+  //       meta: { title: '新增预订' }
+  //     },
+  //     {
+  //       path: 'tree',
+  //       name: 'Tree',
+  //       // component: () => import('@/views/tree/index'),
+  //       meta: { title: '直接入住' }
+  //     }
+  //   ]
+  // },
 
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
-      }
-    ]
-  },
+  // {
+  //   path: '/form',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Form',
+  //       component: () => import('@/views/form/index'),
+  //       meta: { title: 'Form', icon: 'form' }
+  //     }
+  //   ]
+  // },
+  /* 物品管理*/
+  // {
+  //   path: '/nested',
+  //   component: Layout,
+  //   redirect: '/nested/menu1',
+  //   name: 'Nested',
+  //   meta: { title: '物品管理', icon: 'el-icon-shopping-bag-2' },
+  //   children: [
+  //     {
+  //       path: 'menu1',
+  //       // component: () => import('@/views/nested/menu1/index'), // Parent router-view
+  //       name: 'Menu1',
+  //       meta: { title: '遗留物品' }
+  //     },
+  //     {
+  //       path: 'menu1-3',
+  //       // component: () => import('@/views/nested/menu1/menu1-3'),
+  //       name: 'Menu1-3',
+  //       meta: { title: '寄存物品' }
+  //     }
+  //   ]
+  // },
+  /* 营业报表*/
+  // {
+  //   path: '/nested',
+  //   component: Layout,
+  //   redirect: '/nested/menu1',
+  //   name: 'Nested',
+  //   meta: { title: '营业报表', icon: 'el-icon-s-marketing'},
+  // },
+  //
+  // {
+  //   path: '/nested',
+  //   component: Layout,
+  //   redirect: '/nested/menu1',
+  //   name: 'Nested',
+  //   meta: { title: '评价管理', icon: 'el-icon-edit-outline'},
+  // },
+  /* 用户设置*/
+  // {
+  //   path: '/nested',
+  //   component: Layout,
+  //   redirect: '/nested/menu1',
+  //   name: 'Nested',
+  //   meta: { title: '用户管理', icon: 'el-icon-user'},
+  //   children: [
+  //     {
+  //       path: 'menu1',
+  //       // component: () => import('@/views/nested/menu1/index'), // Parent router-view
+  //       name: 'Menu1',
+  //       meta: { title: '用户名单' }
+  //     },
+  //     {
+  //       path: 'menu1',
+  //       // component: () => import('@/views/nested/menu1/index'), // Parent router-view
+  //       name: 'Menu1',
+  //       meta: { title: '创建用户' }
+  //     }
+  //   ]
+  // },
+  /* 账号设置*/
+  // {
+  //   path: '/nested',
+  //   component: Layout,
+  //   redirect: '/nested/menu1',
+  //   name: 'Nested',
+  //   meta: { title: '账号设置', icon: 'el-icon-setting'},
+  // },
+
+  // {
+  //   path: 'external-link',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
+  //       meta: { title: 'External Link', icon: 'link' }
+  //     }
+  //   ]
+  // },
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
