@@ -57,23 +57,23 @@ export default {
   computed: {
     ...mapGetters([
       'name'
-    ]),
+    ])
   },
 
   data() {
     return {
-      searchText: "",
-      typeOption: [{name: "全部", value: 0}, {name: "标准单人间", value: 1}, {name: "标准大床房", value: 2}, {name: "标准双人间", value: 3},
-        {name: "豪华双人间", value: 4}, {name: "总统套房", value: 5}, {name: "豪华单人房", value: 6}],
+      searchText: '',
+      typeOption: [{name: '全部', value: 0 }, { name: '标准单人间', value: 1 }, { name: '标准大床房', value: 2 }, { name: '标准双人间', value: 3},
+        { name: '豪华双人间', value: 4 }, { name: '总统套房', value: 5 }, { name: '豪华单人房', value: 6 }],
       statusOption: [
-        {key: "emptyClean", name: "空净", value: 0},
-        {key: "emptyDirty", name: "空脏", value: 1},
-        {key: "liveClean", name: "住净", value: 2},
-        {key: "liveDirty", name: "住脏", value: 3},
-        {key: "repair", name: "维修", value: 4},
-        {key: "clock", name: "锁房", value: 5}],
+        { key: 'emptyClean', name: '空净', value: 0 },
+        { key: 'emptyDirty', name: '空脏', value: 1 },
+        { key: 'liveClean', name: '住净', value: 2 },
+        { key: 'liveDirty', name: '住脏', value: 3 },
+        { key: 'repair', name: '维修', value: 4 },
+        { key: 'clock', name: '锁房', value: 5 }],
       listQuery: {
-        roomNumber: "",
+        roomNumber: '',
         roomType: 0
       },
       data: {},
