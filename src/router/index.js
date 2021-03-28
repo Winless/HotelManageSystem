@@ -53,12 +53,22 @@ export const constantRoutes = [
       path: '/dashboard/index',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: '房态列表', icon: 'dashboard' }
+      meta: { title: '房态图', icon: 'dashboard' }
     }, {
       path: '/dashboard/roomStatusTable',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/roomStatusTable'),
-      meta: { title: '房态图', icon: 'dashboard' }
+      meta: { title: '房态表', icon: 'dashboard' }
+    }, {
+      path: '/dashboard/checkroom',
+      name: 'Checkroom',
+      component: () => import('@/views/dashboard/checkroom'),
+      meta: { title: '查房列表', icon: 'dashboard' }
+    }, {
+      path: '/dashboard/repairroom',
+      name: 'Repairroom',
+      component: () => import('@/views/dashboard/repairroom'),
+      meta: { title: '维修列表', icon: 'dashboard' }
     }]
   },
 
@@ -104,32 +114,9 @@ export const constantRoutes = [
     name: 'Nested',
     meta: {
       title: 'Nested',
-      icon: 'nested',
+      icon: 'nested'
     }
-// =======
-//       meta: { title: '房态列表' }
-// >>>>>>> 78119021c39dddbe77592ee54d2ec78745fc6183
-    },
-    // {
-    //   path: '/dashboardPic',
-    //   name: 'RoomStatusTable',
-    //   component: () => import('@/views/dashboard/roomStatusTable'),
-    //   meta: { title: '房态图' }
-    // }
-    // {
-    //   path: 'dashboard',
-    //   name: 'Home',
-    //   component: () => import('@/views/dashboard/roomStatusTable'),
-    //   meta: { title: '查房列表' }
-    // },
-    // {
-    //   path: 'dashboard',
-    //   name: 'Home',
-    //   component: () => import('@/views/dashboard/roomStatusTable'),
-    //   meta: { title: '房务列表' }
-    // }
-    // ]
-  // },
+  },
   /* 预订接待*/
   // {
   //   path: '/example',

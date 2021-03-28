@@ -54,8 +54,19 @@
             {{ scope.row.repair }}
           </template>
         </el-table-column>
+        <el-table-column
+        label="可售房数">
+        <template slot-scope="scope">
+          {{ scope.row.sold }}
+        </template>
+        </el-table-column>
       </el-table>
     <!--</div>-->
+    <div>
+      <p><span class="redColor">*</span>可售房数 = 总房数 - 在住房数 - 预抵房数 + 预离房数 - 维修房数 - 停用房数 - 保留房数</p>
+      <p><span class="redColor">*</span>可用房数 = 总房数 - 在住房数 - 维修房数 - 停用房数 - 保留房数</p>
+      <p><span class="redColor">*</span>当前出租率 = 在住房数 / 总房数</p>
+    </div>
   </div>
 </template>
 
@@ -71,7 +82,8 @@ export default {
         today: 0,
         arrive: 0,
         leave: 20,
-        repair: 0
+        repair: 0,
+        sold: 25
       }, {
         type: "标准单人房",
         total: 298,
@@ -79,7 +91,8 @@ export default {
         today: 1,
         arrive: 2,
         leave: 152,
-        repair: 1
+        repair: 1,
+        sold: 124
       }]
     }
   }
@@ -87,5 +100,7 @@ export default {
 </script>
 
 <style scoped>
-
+  .redColor{
+    color: red;
+}
 </style>
