@@ -51,7 +51,7 @@ import { mapGetters } from 'vuex'
 import { fetchList } from '@/api/room'
 
 export default {
-  name: 'Dashboard',
+  name: 'Home',
   computed: {
     ...mapGetters([
       'name'
@@ -117,10 +117,10 @@ export default {
       if (this.listQuery.roomNumber.length > 0) {
         this.roomList = this.roomList.filter(i => i.roomNumber.indexOf(this.listQuery.roomNumber) !== -1)
       }
-      if (this.roomStatus == -1) {
+      if (this.roomStatus === -1) {
         this.roomList = this.roomList
       } else {
-        this.roomList = this.roomList.filter(room => room.roomStatus == this.roomStatus)
+        this.roomList = this.roomList.filter(room => room.roomStatus === this.roomStatus)
       }
     },
 

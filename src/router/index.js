@@ -42,34 +42,20 @@ export const constantRoutes = [
     component: () => import('@/views/404'),
     hidden: true
   },
-
-  {
-    path: '/user/changePassword',
-    name: 'ChangePassword',
-    component: Layout,
-    children: [{
-      path: '/user/changePassword',
-      name: 'ChangePassword',
-      component: () => import('@/views/user/changePassword'),
-    }],
-    hidden: true
-  },
-
   /* 房态中心*/
   {
     path: '/',
     component: Layout,
     redirect: '/dashboard/index',
-    name: 'Home',
     meta: { title: '房态中心', icon: 'el-icon-s-home' },
     children: [{
       path: '/dashboard/index',
-      name: 'Dashboard',
+      name: 'Home',
       component: () => import('@/views/dashboard/index'),
       meta: { title: '房态图' }
     }, {
       path: '/dashboard/roomStatusTable',
-      name: 'Dashboard',
+      name: 'RoomStatusTable',
       component: () => import('@/views/dashboard/roomStatusTable'),
       meta: { title: '房态表' }
     }, {
@@ -107,7 +93,7 @@ export const constantRoutes = [
   {
     path: '/book',
     component: Layout,
-    name: 'Home',
+    redirect: '/book/index',
     meta: { title: '预定接待', icon: 'el-icon-document' },
     children: [{
       path: '/book/index',
@@ -121,41 +107,29 @@ export const constantRoutes = [
       meta: { title: '新增预订' }
     }]
   },
-
-  // {
-  //   path: '/nested',
-  //   component: Layout,
-  //   redirect: '/nested/menu1',
-  //   name: 'Nested',
-  //   meta: {
-  //     title: 'Nested',
-  //     icon: 'nested'
-  //   }
-  // },
-  // {
-  //   path: '/form',
-  //   component: Layout,
-  //   children: [
-  //     {
-  //       path: 'index',
-  //       name: 'Form',
-  //       component: () => import('@/views/form/index'),
-  //       meta: { title: 'Form', icon: 'form' }
-  //     }
-  //   ]
-  // },
-
   /* 营业报表*/
   {
     path: '/Statement',
     component: Layout,
-    name: 'statement',
     children: [
       {
         path: 'index',
         name: 'statement',
         component: () => import('@/views/Statement/index'),
         meta: { title: '营业报表', icon: 'el-icon-data-line' }
+      }
+    ]
+  },
+  /* 评价管理*/
+  {
+    path: '/comment',
+    component: Layout,
+    children: [
+      {
+        path: '/comment/index',
+        name: 'Comment',
+        component: () => import('@/views/comment/index'),
+        meta: { title: '评价管理', icon: 'el-icon-edit-outline' }
       }
     ]
   },
@@ -176,6 +150,11 @@ export const constantRoutes = [
       name: 'CreateUser',
       component: () => import('@/views/user/createUser'),
       meta: { title: '创建用户' }
+    }, {
+      path: '/user/changePassword',
+      name: 'ChangePassword',
+      component: () => import('@/views/user/changePassword'),
+      hidden: true
     }]
   },
   /* 账号设置*/
