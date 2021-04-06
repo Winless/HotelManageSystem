@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import 'lib-flexible'
 
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 

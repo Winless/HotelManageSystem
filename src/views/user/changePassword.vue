@@ -16,18 +16,20 @@
       <span>确认新密码</span>
       <el-input v-model="confirmnp" placeholder="请输入新密码" />
     </div>
-    <el-button type="primary" @click="confirm()">提交</el-button>
+    <el-button type="primary" @click="createconfirm">确认修改</el-button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ChangePassword'
+  name: 'ChangePassword',
+  methods: {
+    createconfirm() {
+      alert('修改成功！')
+    }
+  }
 }
 
-function confirm() {
-  alert('确定要修改？')
-}
 </script>
 
 <style scoped>

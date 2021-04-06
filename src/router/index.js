@@ -44,6 +44,19 @@ export const constantRoutes = [
   },
 
   {
+    path: '/user',
+    name: 'ChangePassword',
+    component: Layout,
+    children: [{
+      path: '/user/changePassword',
+      name: 'ChangePassword',
+      component: () => import('@/views/user/changePassword'),
+    }],
+    hidden: true
+  },
+
+  /* 房态中心*/
+  {
     path: '/',
     component: Layout,
     redirect: '/dashboard/index',
@@ -53,99 +66,72 @@ export const constantRoutes = [
       path: '/dashboard/index',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: '房态图', icon: 'dashboard' }
+      meta: { title: '房态图' }
     }, {
       path: '/dashboard/roomStatusTable',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/roomStatusTable'),
-      meta: { title: '房态表', icon: 'dashboard' }
-    }, {
-      path: '/dashboard/checkroom',
-      name: 'Checkroom',
-      component: () => import('@/views/dashboard/checkroom'),
-      meta: { title: '查房列表', icon: 'dashboard' }
+      meta: { title: '房态表' }
     }, {
       path: '/dashboard/repairroom',
       name: 'Repairroom',
       component: () => import('@/views/dashboard/repairroom'),
-      meta: { title: '维修列表', icon: 'dashboard' }
+      meta: { title: '房务列表' }
     }]
   },
 
-  {
-    path: '/example',
-    component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
-  },
-
-  {
-    path: '/book',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Book',
-        component: () => import('@/views/book/index'),
-        meta: { title: '新增预订', icon: 'form' }
-      }
-    ]
-  },
-
-  {
-    path: '/nested',
-    component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    }
-  },
-  /* 预订接待*/
   // {
   //   path: '/example',
   //   component: Layout,
   //   redirect: '/example/table',
   //   name: 'Example',
-  //   meta: { title: '预订接待', icon: 'el-icon-document' },
+  //   meta: { title: 'Example', icon: 'el-icon-s-help' },
   //   children: [
   //     {
   //       path: 'table',
   //       name: 'Table',
-  //       // component: () => import('@/views/table/index'),
-  //       meta: { title: '订单管理' }
+  //       component: () => import('@/views/table/index'),
+  //       meta: { title: 'Table', icon: 'table' }
   //     },
   //     {
   //       path: 'tree',
   //       name: 'Tree',
-  //       // component: () => import('@/views/tree/index'),
-  //       meta: { title: '新增预订' }
-  //     },
-  //     {
-  //       path: 'tree',
-  //       name: 'Tree',
-  //       // component: () => import('@/views/tree/index'),
-  //       meta: { title: '直接入住' }
+  //       component: () => import('@/views/tree/index'),
+  //       meta: { title: 'Tree', icon: 'tree' }
   //     }
   //   ]
   // },
 
+  /* 预定接待*/
+  /* 房态中心*/
+  {
+    path: '/book',
+    component: Layout,
+    name: 'Home',
+    meta: { title: '预定接待', icon: 'el-icon-document' },
+    children: [{
+      path: '/book/index',
+      name: 'Book',
+      component: () => import('@/views/book/index'),
+      meta: { title: '订单管理' }
+    }, {
+      path: '/book/booking',
+      name: 'Booking',
+      component: () => import('@/views/book/booking'),
+      meta: { title: '新增预订' }
+    }]
+  },
+
+  // {
+  //   path: '/nested',
+  //   component: Layout,
+  //   redirect: '/nested/menu1',
+  //   name: 'Nested',
+  //   meta: {
+  //     title: 'Nested',
+  //     icon: 'nested'
+  //   }
+  // },
   // {
   //   path: '/form',
   //   component: Layout,
@@ -158,74 +144,54 @@ export const constantRoutes = [
   //     }
   //   ]
   // },
-  /* 物品管理*/
-  // {
-  //   path: '/nested',
-  //   component: Layout,
-  //   redirect: '/nested/menu1',
-  //   name: 'Nested',
-  //   meta: { title: '物品管理', icon: 'el-icon-shopping-bag-2' },
-  //   children: [
-  //     {
-  //       path: 'menu1',
-  //       // component: () => import('@/views/nested/menu1/index'), // Parent router-view
-  //       name: 'Menu1',
-  //       meta: { title: '遗留物品' }
-  //     },
-  //     {
-  //       path: 'menu1-3',
-  //       // component: () => import('@/views/nested/menu1/menu1-3'),
-  //       name: 'Menu1-3',
-  //       meta: { title: '寄存物品' }
-  //     }
-  //   ]
-  // },
+
   /* 营业报表*/
-  // {
-  //   path: '/nested',
-  //   component: Layout,
-  //   redirect: '/nested/menu1',
-  //   name: 'Nested',
-  //   meta: { title: '营业报表', icon: 'el-icon-s-marketing'},
-  // },
-  //
-  // {
-  //   path: '/nested',
-  //   component: Layout,
-  //   redirect: '/nested/menu1',
-  //   name: 'Nested',
-  //   meta: { title: '评价管理', icon: 'el-icon-edit-outline'},
-  // },
+  {
+    path: '/Statement',
+    component: Layout,
+    name: 'statement',
+    children: [
+      {
+        path: 'index',
+        name: 'statement',
+        component: () => import('@/views/Statement/index'),
+        meta: { title: '营业报表', icon: 'el-icon-data-line' }
+      }
+    ]
+  },
   /* 用户设置*/
-  // {
-  //   path: '/nested',
-  //   component: Layout,
-  //   redirect: '/nested/menu1',
-  //   name: 'Nested',
-  //   meta: { title: '用户管理', icon: 'el-icon-user'},
-  //   children: [
-  //     {
-  //       path: 'menu1',
-  //       // component: () => import('@/views/nested/menu1/index'), // Parent router-view
-  //       name: 'Menu1',
-  //       meta: { title: '用户名单' }
-  //     },
-  //     {
-  //       path: 'menu1',
-  //       // component: () => import('@/views/nested/menu1/index'), // Parent router-view
-  //       name: 'Menu1',
-  //       meta: { title: '创建用户' }
-  //     }
-  //   ]
-  // },
+  {
+    path: '/user',
+    component: Layout,
+    redirect: '/user/index',
+    name: 'User',
+    meta: { title: '用户管理', icon: 'el-icon-user' },
+    children: [{
+      path: '/user/index',
+      name: 'User',
+      component: () => import('@/views/user/index'),
+      meta: { title: '用户名单' }
+    }, {
+      path: '/user/createUser',
+      name: 'CreateUser',
+      component: () => import('@/views/user/createUser'),
+      meta: { title: '创建用户' }
+    }]
+  },
   /* 账号设置*/
-  // {
-  //   path: '/nested',
-  //   component: Layout,
-  //   redirect: '/nested/menu1',
-  //   name: 'Nested',
-  //   meta: { title: '账号设置', icon: 'el-icon-setting'},
-  // },
+  {
+    path: '/account',
+    component: Layout,
+    name: 'AccountSetting',
+    children: [
+      {
+        path: 'index',
+        name: 'AccountSetting',
+        component: () => import('@/views/account/index'),
+        meta: { title: '资料设置', icon: 'el-icon-setting' }
+      }
+    ]
+  },
 
   // {
   //   path: 'external-link',
