@@ -44,7 +44,7 @@ export const constantRoutes = [
   },
 
   {
-    path: '/user',
+    path: '/user/changePassword',
     name: 'ChangePassword',
     component: Layout,
     children: [{

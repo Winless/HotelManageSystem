@@ -112,7 +112,7 @@ export default {
         value: '前台人员'
       }],
 
-      canInput: 'true',
+      canInput: true,
       functionBotton: '编辑'
     }
   },
