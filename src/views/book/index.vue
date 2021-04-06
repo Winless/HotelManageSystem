@@ -28,9 +28,9 @@
       </div>
     </div>
     <el-table
-      :data="tableData"
+      :data="list"
       style="width: 100%"
-      height="100%"
+      fit
     >
       <el-table-column
         fixed
@@ -74,6 +74,8 @@
         <el-button type="text" size="small">编辑</el-button>
       </el-table-column>
     </el-table>
+
+    <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
   </div>
 
 </template>
@@ -81,11 +83,22 @@
 <script>
 import { mapGetters } from 'vuex'
 import { fetchList } from '@/api/room'
+import Pagination from '@/components/Pagination'
 
 export default {
   name: 'Booking',
+  components: { Pagination },
   data() {
     return {
+      total: 15,
+      listQuery: {
+        page: 1,
+        limit: 10
+      },
+      checkin: "",
+      checkout: "",
+
+      list: [],
       tableData: [{
         orderNumber: '1867263475637281763542',
         bookingName: '王小虎',
@@ -254,9 +267,18 @@ export default {
       }]
     }
   },
+
+  created() {
+    this.getList();
+  },
   methods: {
     deleteRow(index, rows) {
       rows.splice(index, 1)
+    },
+
+    getList() {
+      const {limit, page} = this.listQuery;
+      this.list = this.tableData.filter((item, index) => index < limit * page && index >= limit * (page - 1))
     }
   }
 }
