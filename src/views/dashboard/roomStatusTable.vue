@@ -1,83 +1,58 @@
 <template>
   <div class="app-container">
     <div class="refresh">
-      <el-button>
+      <el-button @click="refresh()">
         <i class="el-icon-refresh" />
         <span>刷新</span>
       </el-button>
     </div>
-    <!--    <div class="roomStatusData">-->
-    <el-table
-      border
-      :data="list"
-      style="margin-top: 10px"
-    >
-      <el-table-column
-
-        label="房间类型"
-      >
+    <el-table border :data="roomForm" style="margin-top: 10px">
+      <el-table-column label="房间类型">
         <template slot-scope="scope">
-          {{ scope.row.type }}
+          {{ scope.row.roomName }}
         </template>
       </el-table-column>
-      <el-table-column
-        label="总房数"
-      >
+      <el-table-column label="总房数">
         <template slot-scope="scope">
-          {{ scope.row.total }}
+          {{ scope.row.roomCount }}
         </template>
       </el-table-column>
-      <el-table-column
-        label="在住房数"
-      >
+      <el-table-column label="在住房数">
         <template slot-scope="scope">
-          {{ scope.row.current }}
+          {{ scope.row.livingRoomCount }}
         </template>
       </el-table-column>
-      <el-table-column
-        label="可用房数"
-      >
+      <el-table-column label="可用房数">
         <template slot-scope="scope">
-          {{ scope.row.today }}
+          {{ scope.row.canUseCount }}
         </template>
       </el-table-column>
-      <el-table-column
-        label="预抵房数"
-      >
+      <el-table-column label="预抵房数">
         <template slot-scope="scope">
-          {{ scope.row.arrive }}
+          {{ scope.row.todayCheckInCount }}
         </template>
       </el-table-column>
-      <el-table-column
-        label="预离房数"
-      >
+      <el-table-column label="预离房数">
         <template slot-scope="scope">
-          {{ scope.row.leave }}
+          {{ scope.row.todayLeaveCount }}
         </template>
       </el-table-column>
-      <el-table-column
-        label="维修房数"
-      >
+      <el-table-column label="维修房数">
         <template slot-scope="scope">
-          {{ scope.row.repair }}
+          {{ scope.row.repairRoomCount }}
         </template>
       </el-table-column>
-      <el-table-column
-        label="可售房数"
-      >
+      <el-table-column label="可售房数">
         <template slot-scope="scope">
-          {{ scope.row.sold }}
+          {{ scope.row.canSaleCount }}
         </template>
       </el-table-column>
-      <el-table-column
-        label="出售率"
-      >
+      <el-table-column label="出售率">
         <template slot-scope="scope">
           {{ scope.row.rate }}
         </template>
       </el-table-column>
     </el-table>
-    <!--</div>-->
     <div>
       <p><span class="redColor">*</span>可售房数 = 总房数 - 在住房数 - 预抵房数 + 预离房数 - 维修房数</p>
       <p><span class="redColor">*</span>可用房数 = 总房数 - 在住房数 - 维修房数 </p>
@@ -87,38 +62,37 @@
 </template>
 
 <script>
+import { fetchForm } from '@/api/room'
+
 export default {
   name: 'RoomStatusTable',
   data() {
     return {
-      list: [{
-        type: '咖啡吧',
-        total: 25,
-        current: 20,
-        today: 0,
-        arrive: 0,
-        leave: 20,
-        repair: 0,
-        sold: 25,
-        rate: this.current / this.total
-      }, {
-        type: '标准单人房',
-        total: 298,
-        current: 166,
-        today: 1,
-        arrive: 2,
-        leave: 152,
-        repair: 1,
-        sold: 124,
-        rate: this.current / this.total
-      }]
+      roomForm: null
+    }
+  },
+
+  created() {
+    this.getData()
+  },
+
+  methods: {
+    getData() {
+      fetchForm().then(res => {
+        this.data = res.data
+        this.roomForm = this.data
+        console.log(this.roomForm)
+      })
+    },
+    refresh() {
+      location.reload()
     }
   }
 }
 </script>
 
 <style scoped>
-  .redColor{
-    color: red;
+.redColor {
+  color: red;
 }
 </style>

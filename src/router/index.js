@@ -105,6 +105,16 @@ export const constantRoutes = [
       name: 'Booking',
       component: () => import('@/views/book/booking'),
       meta: { title: '新增预订' }
+    }, {
+      path: '/book/checkin',
+      name: 'Checkin',
+      component: () => import('@/views/book/checkin'),
+      meta: { title: '直接入住' }
+    }, {
+      path: '/book/invoice',
+      name: 'Invoice',
+      component: () => import('@/views/book/invoice'),
+      meta: { title: '发票管理' }
     }]
   },
   /* 营业报表*/
